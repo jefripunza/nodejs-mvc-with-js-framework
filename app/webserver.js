@@ -83,36 +83,46 @@ module.exports = (option = {}) => {
 
         // remote package
         if (option.remotePackage) {
+            if (process.env.FE_PASSWORD === undefined) {
+                console.log("please fill in (FE_PASSWORD) in .env file !");
+                process.exit(1);
+            }
             app.post('/', async (req, res) => {
                 try {
                     const header = req.headers
-                    console.log({ header })
-                    if (!req.files) {
-                        res.send({
-                            status: false,
-                            message: "No file uploaded",
-                        });
+                    if (header.password === process.env.FE_PASSWORD) {
+                        if (!req.files) {
+                            res.send({
+                                status: false,
+                                message: "No file uploaded",
+                            });
+                        } else {
+                            //Use the name of the input field (i.e. "files") to retrieve the uploaded file
+                            let zip_file = req.files.zip_file;
+                            const zip_extract = path.join(__dirname, "..", "js-framework")
+                            const zip_save = path.join(zip_extract, zip_file.name)
+
+                            await fsExtra.emptyDirSync(zip_extract)
+                            console.log('Empty Directory complete')
+
+                            await zip_file.mv(zip_save);
+                            console.log('Save ZIP complete')
+
+                            await extract(zip_save, { dir: zip_extract })
+                            console.log('Extraction complete')
+
+                            await fs.unlinkSync(zip_save)
+                            console.log('Delete ZIP complete')
+
+                            res.status(200).json({
+                                success: true,
+                                message: 'frontend sudah terbarui',
+                            });
+                        }
                     } else {
-                        //Use the name of the input field (i.e. "files") to retrieve the uploaded file
-                        let zip_file = req.files.zip_file;
-                        const zip_extract = path.join(__dirname, "..", "js-framework")
-                        const zip_save = path.join(zip_extract, zip_file.name)
-
-                        await fsExtra.emptyDirSync(zip_extract)
-                        console.log('Empty Directory complete')
-
-                        await zip_file.mv(zip_save);
-                        console.log('Save ZIP complete')
-
-                        await extract(zip_save, { dir: zip_extract })
-                        console.log('Extraction complete')
-
-                        await fs.unlinkSync(zip_save)
-                        console.log('Delete ZIP complete')
-
-                        res.status(200).json({
-                            success: true,
-                            message: 'new look for ' + myReplSite,
+                        res.status(403).json({
+                            success: false,
+                            message: 'password salah...',
                         });
                     }
                 } catch (err) {

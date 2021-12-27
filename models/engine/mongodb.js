@@ -1,5 +1,5 @@
 if (process.env.MONGODB_URL === undefined) {
-    console.log("please fill in the MongoDB URL in .env file !");
+    console.log("please fill in (MONGODB_URL) in .env file !");
     process.exit(1);
 }
 
