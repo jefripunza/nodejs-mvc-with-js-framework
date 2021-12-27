@@ -47,7 +47,7 @@ Ditambah dengan metode frontend development yang saya buat sendiri dengan nama (
 
 Melihat dari beberapa kelebihan dari MVC dan metode yang saya buat, maka saya membuat repositori ini agar saya dan kawan-kawan bisa merasakan bagaimana menggunakan konsep MVC dan RFP di NodeJS.
 Mudah-mudahan bermanfaat...
-
+ok
 ---
 
 <br />
