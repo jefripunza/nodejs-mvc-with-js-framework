@@ -1,0 +1,7 @@
+{
+    "ignore": [
+        "js-framework/*",
+        "x-sources/*",
+        "*.json"
+    ]
+}

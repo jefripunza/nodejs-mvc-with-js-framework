@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "build": "react-scripts build && node sendToBackend"
+    },
+    "devDependencies": {
+        "archiver": "^5.3.0",
+        "axios": "^0.24.0"
+    }
+}
