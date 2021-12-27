@@ -1,5 +1,5 @@
 # MVC for NodeJS
-![banner](banner.png)
+![banner](banner.jpg)
 
 ---
 
