@@ -51,7 +51,7 @@
             .finally(() => {
                 setTimeout(() => {
                     fs.unlinkSync(zip_name)
-                    console.log("DELETE...")
+                    console.log("DELETE...") 
                 }, 3000)
             })
     });
