@@ -62,6 +62,8 @@ MVC atau Model View Controller adalah sebuah pola desain arsitektur dalam sistem
 Dengan konsep MVC ini, website seakan memiliki bagian yang terpisah dan bisa dikembangkan masing-masing. Maka, proses pembuatan website bisa dilakukan lebih cepat karena developer akan lebih fokus pada pengerjaan salah satu bagian saja.
 Karena dianggap efektif, konsep MVC banyak diterapkan di berbagai framework.
 
+![RFP](RFP.jpg)
+
 Ditambah dengan metode frontend development yang saya buat sendiri dengan nama (RFP) **Remote Frontend Package**, yaitu dengan mengarsipkan semua hasil build dan file archive-nya (zip) dikirim ke pihak backend agar isi file archive di ekstrak ke dalam folder **js-framework** untuk ditampilkan ke publik.
 
 Melihat dari beberapa kelebihan dari MVC dan metode yang saya buat, maka saya membuat repositori ini agar saya dan kawan-kawan bisa merasakan bagaimana menggunakan konsep MVC dan RFP di NodeJS.
