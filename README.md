@@ -56,16 +56,14 @@ Mudah-mudahan bermanfaat...
 
 ## Preparation
 
-Tidak terlalu rumit untuk inisial awal, cukup copy saja file <b>connection.js</b> nya kedalam project anda lalu di import dan langsung bisa digunakan
+##### clone template
+```bash
+git clone https://github.com/jefripunza/nodejs-mvc-with-js-framework my-project-name
+```
 
-##### judul script
-```txt
-_id               = primary key (string|int)
-_create_at        = kapan dibuat (timestamp)
-_modified_at      = kapan terakhir dirubah (timestamp)
-_modified_history = history modifikasi data (array)
-_deleted_at       = menghapus sementara data dari list (tidak permanen)
-_SEO              = untuk keperluan SEO (integer)
+lalu pada folder forFrontEnd, copy file <b>sendToBackend.js</b> kedalam project frontend anda dan install dependensi yang diperlukan : 
+```bash
+npm -i -D archiver axios
 ```
 
 
