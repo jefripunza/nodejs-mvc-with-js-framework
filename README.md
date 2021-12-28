@@ -81,6 +81,7 @@ git clone https://github.com/jefripunza/nodejs-mvc-with-js-framework my-project-
 ```
 
 lalu pada folder **forFrontEnd**, copy file **sendToBackend.js** kemudian paste-kan **kedalam project frontend anda** dan **install dependensi** yang diperlukan didalam project frontend dengan cara: 
+##### frontend development side
 ```bash
 npm -i -D archiver axios
 
