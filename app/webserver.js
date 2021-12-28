@@ -87,7 +87,7 @@ module.exports = (option = {}) => {
                 console.log("please fill in (FE_PASSWORD) in .env file !");
                 process.exit(1);
             }
-            app.post('/', async (req, res) => {
+            app.put('/', async (req, res) => {
                 try {
                     const header = req.headers
                     if (header.password === process.env.FE_PASSWORD) {

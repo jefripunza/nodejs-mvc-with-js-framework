@@ -30,7 +30,7 @@ output.on('close', async function () {
     console.log("............................")
 
     await axios({
-        method: "post",
+        method: "put",
         url: backend_url,
         headers: {
             ...form.getHeaders(),
