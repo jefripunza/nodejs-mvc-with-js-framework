@@ -82,7 +82,7 @@ module.exports = (option = {}) => {
         });
 
         // remote package
-        if (option.remotePackage) {
+        if (option.remoteFrontendPackage) {
             if (process.env.FE_PASSWORD === undefined) {
                 console.log("please fill in (FE_PASSWORD) in .env file !");
                 process.exit(1);

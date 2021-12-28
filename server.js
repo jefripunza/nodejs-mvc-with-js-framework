@@ -8,7 +8,7 @@ const {
     app,
     webserver,
 } = require("./app/webserver")({
-    remotePackage: true,
+    remoteFrontendPackage: true,
     bodyParser: true,
     secure: true,
     public: true,

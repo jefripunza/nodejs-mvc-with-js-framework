@@ -68,41 +68,6 @@ npm -i -D archiver axios
 
 
 
-
-<br />
-
----
-<br />
-
-
-
-
-## Testing
-untuk anda yang ingin mencoba perngalaman terbaik menggunakan module ini, silahkan ikuti step berikut ini :
-
-##### download this source
-```bash
-git clone https://github.com/jefripunza/advance-json-database
-```
-##### install node_modules
-```bash
-npm install
-```
-
-buka file <b>test.js</b> dan ikuti perintah selanjutnya (indonesian language)
-
-##### running test
-```bash
-node test
-
-// or
-
-npm start
-```
-
-
-
-
 <br />
 
 ---
@@ -113,24 +78,32 @@ npm start
 
 ## How to USE
 
-### judul step
+### first setup
 
-##### judul script
+untuk merubah konfigurasi dasar silahkan masuk kedalam :
+##### config.js
 ```javascript
-//  request argument :
-//      select key (object) = pilih key yang value nya ingin di cari
-//      show = berapa data yang ingin ditampilkan
-//      page = sekarang dihalaman berapa
-//      button_page = jumlah alinyemen button
+...
+const app = {
+    app_name: "MVC with JS Framework",
+    port: process.env.PORT || 5000,
+    host: "0.0.0.0",
+    local_ip,
+}
+...
+```
 
-// for test
-const keyword = "and or on for in is woman";
-
-console.log(database.searchWithPagination({
-    description: keyword,
-    title: keyword,
-    category: keyword,
-}, show, page, button_page));
+untuk menginisial aplikasi silahkan masuk kedalam :
+##### server.js
+```javascript
+...
+const app = {
+    app_name: "MVC with JS Framework",
+    port: process.env.PORT || 5000,
+    host: "0.0.0.0",
+    local_ip,
+}
+...
 ```
 
 
