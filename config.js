@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV
 const isProduction = env === "production"
 
 const app = {
-    app_name: "MVC with JS Framework",
+    app_name: "NodeJS MVC with JS Framework",
     port: process.env.PORT || 5000,
     host: "0.0.0.0",
     local_ip,

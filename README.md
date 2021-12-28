@@ -129,7 +129,7 @@ untuk merubah konfigurasi dasar silahkan masuk kedalam :
 ```javascript
 ...
 const app = {
-    app_name: "MVC with JS Framework",
+    app_name: "NodeJS MVC with JS Framework",
     port: process.env.PORT || 5000,
     host: "0.0.0.0",
     local_ip,
@@ -137,7 +137,7 @@ const app = {
 ...
 ```
 
-untuk menginisial aplikasi silahkan masuk kedalam :
+untuk menginisial aplikasi yang ingin digunakan silahkan masuk kedalam :
 ##### server.js
 ```javascript
 ...
