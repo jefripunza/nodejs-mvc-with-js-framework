@@ -1,8 +1,6 @@
 // ============ Test Area ============
 
 module.exports = ({ app, webserver }) => {
-    async function run() {
-
-    }
-    run()
-}
+  async function run() {}
+  run();
+};

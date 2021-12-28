@@ -4,7 +4,13 @@
     "description": "belajar membuat CI clode versi NodeJS",
     "main": "server.js",
     "scripts": {
+        "format": "prettier \"**/*.js\" --ignore-path ./.prettierignore --write && git status",
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "lint-staged": {
+        "js-framework/*.{js,json}": [
+            "prettier --ignore-path ./.prettierignore --write"
+        ]
     },
     "author": "Jefri Herdi Triyanto",
     "license": "ISC",
@@ -25,5 +31,9 @@
         "node-telegram-bot-api": "^0.56.0",
         "pg": "^8.7.1",
         "socket.io": "^4.4.0"
+    },
+    "devDependencies": {
+        "eslint-config-prettier": "^8.3.0",
+        "prettier": "^2.5.1"
     }
 }
