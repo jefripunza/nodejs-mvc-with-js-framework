@@ -97,12 +97,24 @@ untuk menginisial aplikasi silahkan masuk kedalam :
 ##### server.js
 ```javascript
 ...
-const app = {
-    app_name: "MVC with JS Framework",
-    port: process.env.PORT || 5000,
-    host: "0.0.0.0",
-    local_ip,
-}
+// Webserver
+const {
+    app,
+    webserver,
+} = require("./app/webserver")({
+    remoteFrontendPackage: true,
+    bodyParser: true,
+    secure: true,
+    public: true,
+    debug: true,
+})
+
+// Web Socket
+const io = require('./app/websocket')({
+    app,
+    webserver,
+    debug: true,
+})
 ...
 ```
 
