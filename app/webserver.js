@@ -36,12 +36,6 @@ module.exports = (option = {}) => {
   // ======================== Middlewares ========================
   require("../middlewares/webserver")(app);
   app.use((req, res, next) => {
-    // .htaccess replacement
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-www-form-urlencoded, Origin, X-Requested-With, Content-Type, Accept, Authorization, *"
-    );
     if (req.method === "OPTIONS") {
       res.header(
         "Access-Control-Allow-Methods",
@@ -65,8 +59,28 @@ module.exports = (option = {}) => {
   }
 
   if (option.secure) {
-    const helmet = require("helmet");
-    app.use(helmet()); // see : https://helmetjs.github.io/
+    if (option.secure.helmet) {
+      const helmet = require("helmet");
+      app.use(helmet()); // see : https://helmetjs.github.io/
+    }
+    if (option.secure.cors) {
+      const cors = require("cors");
+      app.use(cors());
+    }
+    if (option.secure.allowOrigin) {
+      app.use((req, res, next) => {
+        // .htaccess replacement
+        res.header("Access-Control-Allow-Origin", option.secure.allowOrigin);
+        next();
+      });
+    }
+    if (option.secure.allowHeaders) {
+      app.use((req, res, next) => {
+        // .htaccess replacement
+        res.header("Access-Control-Allow-Headers", option.secure.allowHeaders);
+        next();
+      });
+    }
   }
 
   if (option.debug) {
