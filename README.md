@@ -80,6 +80,26 @@ npm -i -D archiver axios
 
 ### first setup
 
+buat file **.env** kedalam project dengan variabel sebagai berikut :
+##### config.js
+```text
+FE_PASSWORD=<your secret password>
+
+MONGODB_URL=
+
+MYSQL_USER=
+MYSQL_PASS=
+MYSQL_NAME=
+
+PG_HOST=
+PG_USER=
+PG_PASS=
+PG_DATABASE=
+PG_PORT=5432
+
+TELEGRAM_TOKEN=<if you use telegram bot>
+```
+
 untuk merubah konfigurasi dasar silahkan masuk kedalam :
 ##### config.js
 ```javascript

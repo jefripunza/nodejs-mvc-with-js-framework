@@ -1,5 +1,5 @@
-if (process.env.DB_USER === undefined || process.env.DB_PASS === undefined || process.env.DB_NAME === undefined) {
-    console.log("please fill in the MySQL require (DB_USER, DB_PASS, DB_NAME) in .env file !");
+if (process.env.MYSQL_USER === undefined || process.env.MYSQL_PASS === undefined || process.env.MYSQL_NAME === undefined) {
+    console.log("please fill in the MySQL require (MYSQL_USER, MYSQL_PASS, MYSQL_NAME) in .env file !");
     process.exit(1);
 }
 
@@ -11,9 +11,9 @@ const mysql = require('mysql');
 // koneksi server
 const database = mysql.createConnection({
     host: "localhost",
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASS,
+    database: process.env.MYSQL_NAME,
     multipleStatements: true,
 });
 database.connect(function (err) {
@@ -21,7 +21,7 @@ database.connect(function (err) {
         console.log("Error connecting to MySQL!");
         process.exit(1);
     };
-    console.log(`Database Connected! (${process.env.DB_NAME})`);
+    console.log(`Database Connected! (${process.env.MYSQL_NAME})`);
 });
 
 /**
