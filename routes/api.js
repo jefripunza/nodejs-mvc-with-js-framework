@@ -17,5 +17,11 @@ module.exports = (app) => {
       method: "get",
       render: controllers.about,
     },
+    {
+      path: "/csrf-token",
+      method: "get",
+      csrf: true,
+      render: controllers.csrf,
+    },
   ]);
 };

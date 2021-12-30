@@ -177,8 +177,18 @@ const {
     remoteFrontendPackage: true,
     bodyParser: true,
     secure: {
+        parameterPollution: true,
+        contentSecurityPolicy: {
+        defaultSrc: ["'self'"],
+        scriptSrc: scriptSources,
+        scriptSrcElem: scriptSources,
+        styleSrc: styleSources,
+        connectSrc: connectSources,
+        reportUri: '/report-violation',
+        },
         helmet: true,
         cors: true,
+        cookie: 'your-secret-key',
         allowOrigin: "*",
         allowHeaders: "x-www-form-urlencoded, Origin, X-Requested-With, Content-Type, Accept, Authorization, *",
     },

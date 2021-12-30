@@ -1,19 +1,29 @@
 const config = require("../config");
+const { createDirIfNotExist } = require("../utils/fs");
 
 const path = require("path");
 const fs = require("fs");
-const crypto = require('crypto');
 
+// security
+const bodyParser = require("body-parser");
+const hpp = require('hpp');
+const crypto = require('crypto');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const helmet = require("helmet");
+const cors = require("cors");
+
+// RFP require this...
 const extract = require("extract-zip");
 const fsExtra = require("fs-extra");
 const fileUpload = require("express-fileupload");
 
+// Webserver
 const express = require("express");
 const http = require("http");
 const app = express();
 const server = http.createServer(app);
 
-const { createDirIfNotExist } = require("../utils/fs");
 
 module.exports = (option = {}) => {
   const webserver = server.listen(config.app.port, config.app.host, () => {
@@ -50,7 +60,6 @@ module.exports = (option = {}) => {
 
   // ======================== Options ========================
   if (option.bodyParser) {
-    const bodyParser = require("body-parser");
     app.use(bodyParser.json());
     app.use(
       bodyParser.urlencoded({
@@ -60,13 +69,29 @@ module.exports = (option = {}) => {
   }
 
   if (option.secure) {
+    if (option.secure.parameterPollution) {
+      app.use(hpp());
+    }
+    if (option.secure.contentSecurityPolicy) {
+      app.use(helmet.contentSecurityPolicy({
+        directives: option.secure.contentSecurityPolicy,
+      }));
+    }
     if (option.secure.helmet) {
-      const helmet = require("helmet");
       app.use(helmet()); // see : https://helmetjs.github.io/
     }
     if (option.secure.cors) {
-      const cors = require("cors");
       app.use(cors());
+    }
+    if (option.secure.cookie) {
+      app.use(cookieParser());
+      app.use(
+        session({
+          secret: option.secure.cookie,
+          resave: false,
+          saveUninitialized: false,
+        }),
+      );
     }
     if (option.secure.allowOrigin) {
       app.use((req, res, next) => {
@@ -114,7 +139,7 @@ module.exports = (option = {}) => {
     if (option.remoteFrontendPackage) {
       const rfp = crypto.randomBytes(20).toString('hex');
       fs.writeFileSync(path.join(__dirname, "..", ".rfp"), rfp)
-      if (option.debug){
+      if (option.debug) {
         console.log({ rfp });
       }
       app.put("/", async (req, res) => {
