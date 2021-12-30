@@ -6,10 +6,10 @@ const fs = require("fs");
 
 // security
 const bodyParser = require("body-parser");
-const hpp = require('hpp');
-const crypto = require('crypto');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
+const hpp = require("hpp");
+const crypto = require("crypto");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 const helmet = require("helmet");
 const cors = require("cors");
 
@@ -23,7 +23,6 @@ const express = require("express");
 const http = require("http");
 const app = express();
 const server = http.createServer(app);
-
 
 module.exports = (option = {}) => {
   const webserver = server.listen(config.app.port, config.app.host, () => {
@@ -73,9 +72,11 @@ module.exports = (option = {}) => {
       app.use(hpp());
     }
     if (option.secure.contentSecurityPolicy) {
-      app.use(helmet.contentSecurityPolicy({
-        directives: option.secure.contentSecurityPolicy,
-      }));
+      app.use(
+        helmet.contentSecurityPolicy({
+          directives: option.secure.contentSecurityPolicy,
+        })
+      );
     }
     if (option.secure.helmet) {
       app.use(helmet()); // see : https://helmetjs.github.io/
@@ -90,7 +91,7 @@ module.exports = (option = {}) => {
           secret: option.secure.cookie,
           resave: false,
           saveUninitialized: false,
-        }),
+        })
       );
     }
     if (option.secure.allowOrigin) {
@@ -137,8 +138,8 @@ module.exports = (option = {}) => {
 
     // remote package
     if (option.remoteFrontendPackage) {
-      const rfp = crypto.randomBytes(20).toString('hex');
-      fs.writeFileSync(path.join(__dirname, "..", ".rfp"), rfp)
+      const rfp = crypto.randomBytes(20).toString("hex");
+      fs.writeFileSync(path.join(__dirname, "..", ".rfp"), rfp);
       if (option.debug) {
         console.log({ rfp });
       }

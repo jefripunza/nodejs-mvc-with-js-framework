@@ -12,5 +12,5 @@ exports.about = (req, res) => {
 
 exports.csrf = (req, res) => {
   // pass the csrfToken to the view
-  res.json({ csrfToken: req.csrfToken() })
+  res.json({ csrfToken: req.csrfToken() });
 };

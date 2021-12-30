@@ -21,7 +21,7 @@ const { app, webserver } = require("./app/webserver")({
     },
     helmet: true,
     cors: true,
-    cookie: 'your-secret-key', // csrf ? http://expressjs.com/en/resources/middleware/csurf.html
+    cookie: "your-secret-key", // csrf ? http://expressjs.com/en/resources/middleware/csurf.html
     allowOrigin: "*",
     allowHeaders:
       "x-www-form-urlencoded, Origin, X-Requested-With, Content-Type, Accept, Authorization, *",
@@ -50,7 +50,7 @@ const mail = new Mailer({
   // port: 587, // Port for TLS/STARTTLS
   // secure: false, // true for 465, false for other ports
 });
-mail.use(app)
+mail.use(app);
 
 // ======================== Bot ========================
 

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const csrf = require('csurf');
+const csrf = require("csurf");
 
 /**
  *
@@ -10,11 +10,13 @@ const csrf = require('csurf');
 module.exports = (app, from, routes) => {
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
-    const middlewares = route.middleware ?
-      typeof route.middleware === "function" ? [route.middleware]
-        : route.middleware : []
+    const middlewares = route.middleware
+      ? typeof route.middleware === "function"
+        ? [route.middleware]
+        : route.middleware
+      : [];
     if (route.csrf) {
-      middlewares.push(csrf({ cookie: true }))
+      middlewares.push(csrf({ cookie: true }));
     }
     if (route.method === "get") {
       router.get(route.path, ...middlewares, route.render);
