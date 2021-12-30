@@ -22,7 +22,7 @@ const { app, webserver } = require("./app/webserver")({
     },
     helmet: true,
     cors: true,
-    cookie: 'your-secret-key',
+    cookie: 'your-secret-key', // csrf ? http://expressjs.com/en/resources/middleware/csurf.html
     allowOrigin: "*",
     allowHeaders:
       "x-www-form-urlencoded, Origin, X-Requested-With, Content-Type, Accept, Authorization, *",
