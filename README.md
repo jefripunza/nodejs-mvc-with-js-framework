@@ -208,6 +208,7 @@ const mail = new Mailer({
   // port: 587, // Port for TLS/STARTTLS
   // secure: false, // true for 465, false for other ports
 })
+mail.use(app)
 ...
 ```
 

@@ -64,6 +64,16 @@ class Mailer {
       );
     });
   };
+  /**
+   * 
+   * @param {*} app 
+   */
+  use = (app) => {
+    app.use((req, res, next) => {
+      req.mailer = this;
+      next();
+    });
+  }
 }
 
 module.exports = Mailer;
