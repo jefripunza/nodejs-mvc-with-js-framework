@@ -10,7 +10,8 @@ const { app, webserver } = require("./app/webserver")({
     helmet: true,
     cors: true,
     allowOrigin: "*",
-    allowHeaders: "x-www-form-urlencoded, Origin, X-Requested-With, Content-Type, Accept, Authorization, *",
+    allowHeaders:
+      "x-www-form-urlencoded, Origin, X-Requested-With, Content-Type, Accept, Authorization, *",
   },
   public: true,
   debug: true,
@@ -24,7 +25,7 @@ const io = require("./app/websocket")({
 });
 
 // Mailer
-const Mailer = require("./app/mailer")
+const Mailer = require("./app/mailer");
 const mail = new Mailer({
   //// easy to use
   service: "gmail",
@@ -35,7 +36,7 @@ const mail = new Mailer({
   // host: "smtp.gmail.com",
   // port: 587, // Port for TLS/STARTTLS
   // secure: false, // true for 465, false for other ports
-})
+});
 
 // ======================== Bot ========================
 
