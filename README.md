@@ -109,8 +109,6 @@ yarn add -D archiver axios
 buat file **.env** kedalam project dengan variabel sebagai berikut :
 ##### .env
 ```text
-FE_PASSWORD=<your secret password for RFP>
-
 MAILER_EMAIL=
 MAILER_PASS=
 

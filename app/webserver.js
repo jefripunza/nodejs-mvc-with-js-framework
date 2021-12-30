@@ -2,6 +2,7 @@ const config = require("../config");
 
 const path = require("path");
 const fs = require("fs");
+const crypto = require('crypto');
 
 const extract = require("extract-zip");
 const fsExtra = require("fs-extra");
@@ -111,14 +112,15 @@ module.exports = (option = {}) => {
 
     // remote package
     if (option.remoteFrontendPackage) {
-      if (process.env.FE_PASSWORD === undefined) {
-        console.log("please fill in (FE_PASSWORD) in .env file !");
-        process.exit(1);
+      const rfp = crypto.randomBytes(20).toString('hex');
+      fs.writeFileSync(path.join(__dirname, "..", ".rfp"), rfp)
+      if (option.debug){
+        console.log({ rfp });
       }
       app.put("/", async (req, res) => {
         try {
           const header = req.headers;
-          if (header.password === process.env.FE_PASSWORD) {
+          if (header.password === rfp) {
             if (!req.files) {
               res.send({
                 status: false,
