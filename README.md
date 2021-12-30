@@ -190,6 +190,20 @@ const io = require('./app/websocket')({
     webserver,
     debug: true,
 })
+
+// Mailer
+const Mailer = require("./app/mailer")
+const mail = new Mailer({
+  //// easy to use
+  service: "gmail",
+
+  // --- or ---
+
+  //// manual ~> https://nodemailer.com/smtp/customauth/
+  // host: "smtp.gmail.com",
+  // port: 587, // Port for TLS/STARTTLS
+  // secure: false, // true for 465, false for other ports
+})
 ...
 ```
 
