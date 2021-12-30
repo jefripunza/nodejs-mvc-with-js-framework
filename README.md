@@ -179,12 +179,12 @@ const {
     secure: {
         parameterPollution: true,
         contentSecurityPolicy: {
-        defaultSrc: ["'self'"],
-        scriptSrc: scriptSources,
-        scriptSrcElem: scriptSources,
-        styleSrc: styleSources,
-        connectSrc: connectSources,
-        reportUri: '/report-violation',
+            defaultSrc: ["'self'"],
+            scriptSrc: scriptSources,
+            scriptSrcElem: scriptSources,
+            styleSrc: styleSources,
+            connectSrc: connectSources,
+            reportUri: '/report-violation',
         },
         helmet: true,
         cors: true,
