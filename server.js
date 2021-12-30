@@ -18,7 +18,6 @@ const { app, webserver } = require("./app/webserver")({
       scriptSrcElem: scriptSources,
       styleSrc: styleSources,
       connectSrc: connectSources,
-      reportUri: '/report-violation',
     },
     helmet: true,
     cors: true,
