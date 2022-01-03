@@ -83,13 +83,40 @@ git clone https://github.com/jefripunza/nodejs-mvc-with-js-framework my-project-
 ```
 
 lalu pada folder **forFrontEnd**, copy file **sendToBackend.js** kemudian paste-kan **kedalam project frontend anda** dan **install dependensi** yang diperlukan didalam project frontend dengan cara: 
-##### frontend development side
+
+<br/>
+
+#### frontend development side
 ```bash
 npm -i -D archiver axios
 
 // or
 
 yarn add -D archiver axios
+```
+
+rubah **package.json** pada bagian build menjadi :
+##### config.js
+```json
+// (default) build folder is "build"
+{
+    ...
+    "scripts": {
+        "build": "react-scripts build && node sendToBackend"
+    },
+    ...
+}
+
+// build folder is "dist"
+{
+    ...
+    "scripts": {
+        "build": "react-scripts build && node sendToBackend dist"
+    },
+    ...
+}
+
+// and so on, following your basic javascript framework build folder
 ```
 
 
@@ -126,30 +153,6 @@ PG_DATABASE=
 PG_PORT=5432
 
 TELEGRAM_TOKEN=<if you use telegram bot>
-```
-
-rubah **package.json** pada bagian build menjadi :
-##### config.js
-```json
-// (default) build folder is "build"
-{
-    ...
-    "scripts": {
-        "build": "react-scripts build && node sendToBackend"
-    },
-    ...
-}
-
-// build folder is "dist"
-{
-    ...
-    "scripts": {
-        "build": "react-scripts build && node sendToBackend dist"
-    },
-    ...
-}
-
-// and so on, following your basic javascript framework build folder
 ```
 
 untuk merubah konfigurasi dasar silahkan masuk kedalam :
